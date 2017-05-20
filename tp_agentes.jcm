@@ -1,0 +1,41 @@
+/* 
+    tp_agentes
+    ---------------------------
+
+    JaCaMo Project File
+    
+    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
+    
+    (see jacamo/doc/jcm.html for more information about what can be defined in this file)
+    
+    JaCaMo <VERSION>
+    <DATE>
+*/
+
+mas tp_agentes {
+	
+	agent consumer1 : consumer.asl
+	agent consumer2 : consumer.asl
+	agent supervisor1 : supervisor.asl
+	
+	 workspace environment {
+        artifact supervisorArtifact : tp_agentes.SupervisorArtifact() {
+        }
+        
+        artifact consumer1Artifact : tp_agentes.ConsumerArtifact(){
+        	focused-by : consumer1
+        }
+        
+        artifact consumer2Artifact : tp_agentes.ConsumerArtifact(){
+        	focused-by : consumer1
+        }
+    }
+	    
+    // agent source path
+    asl-path: src/agt
+              src/agt/inc
+
+    
+    
+}
+
