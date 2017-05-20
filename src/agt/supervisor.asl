@@ -8,20 +8,24 @@
 
 /* Plans */
 
-+!startSupervisor(Id) <- makeArtifact(Id, "tp_agentes.SupervisorArtifact",[], ArtifactId);
++!startSupervisor(Id) <- 
 		.print("Starting Supervisor ");
 		.my_name(Name);
-		.print("Artifact created for ", Name);
-		focus(ArtifactId);
-		.print("ArtifactId: ", ArtifactId);
-		initialize(Name);
-		.broadcast(achieve, startConsumer(Id));
+		initializeSupervisorArtifact(Name);
 		.wait(2000);
 		!requestConsumption.
 		
 +!requestConsumption <- .print("Requesting consuption");
-		.broadcast(achieve, sendDayConsumption("Monday")).
+		.broadcast(achieve, sendConsumption).
 
++consumptions(Day, Consumption, Consumer) <- .print ("Received ", Day, " Consumptions: ", Consumption, " from: ", Consumer);
+										receiveConsumptions(Day, Consumption, Consumer).
+
++negociate(Ready) : Ready == true <-  
+		.print("I'm ready to negociate!!");
+		doNegociation.
++printNoDebitConsumer(Day, Consumer, Value) <- 
+					.print("On ", Day, ", ", Consumer, " wastes all the available energy for him.").
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
 

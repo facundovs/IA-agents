@@ -4,19 +4,20 @@
 
 /* Initial goals */
 
+!startConsumer.
 
 /* Plans */
 
-+!startConsumer(SupervisorId) <- 
-	        lookupArtifact(SupervisorId, ArtifactId);
++!startConsumer <- 
 	        .my_name(Name);
 	        .print("I am ", Name);
-			focus(ArtifactId);
-			initialize(Name).
-			
-+!sendDayConsumption(Day)<-
-			.print("Sending consumption for Day ", Day);
-			receiveConsumption(1.0, "pepe").
+			initializeSupervisorArtifact(Name).
+						
++!sendConsumption <-
+			.print("Sending Consumption");
+			.my_name(Name);
+			setConsumptions(Name). 
+
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

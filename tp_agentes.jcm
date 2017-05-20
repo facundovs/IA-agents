@@ -16,18 +16,30 @@ mas tp_agentes {
 	
 	agent consumer1 : consumer.asl
 	agent consumer2 : consumer.asl
+	agent consumer3 : consumer.asl
+	agent consumer4 : consumer.asl
+	
 	agent supervisor1 : supervisor.asl
 	
 	 workspace environment {
         artifact supervisorArtifact : tp_agentes.SupervisorArtifact() {
+        	focused-by : consumer1, consumer2, consumer3, consumer4, supervisor1
         }
         
-        artifact consumer1Artifact : tp_agentes.ConsumerArtifact(){
-        	focused-by : consumer1
+        artifact consumption1Artifact : tp_agentes.ConsumptionArtifact(){
+        	focused-by : consumer1, supervisor1
         }
         
-        artifact consumer2Artifact : tp_agentes.ConsumerArtifact(){
-        	focused-by : consumer1
+        artifact consumption2Artifact : tp_agentes.ConsumptionArtifact(){
+        	focused-by : consumer2, supervisor1
+        }
+        
+        artifact consumption3Artifact : tp_agentes.ConsumptionArtifact(){
+        	focused-by : consumer3, supervisor1
+        }
+        
+        artifact consumption4Artifact : tp_agentes.ConsumptionArtifact(){
+        	focused-by : consumer4, supervisor1
         }
     }
 	    
