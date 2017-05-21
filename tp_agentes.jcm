@@ -18,12 +18,11 @@ mas tp_agentes {
 	agent consumer2 : consumer.asl
 	agent consumer3 : consumer.asl
 	agent consumer4 : consumer.asl
-	
 	agent supervisor1 : supervisor.asl
 	
 	 workspace environment {
         artifact supervisorArtifact : tp_agentes.SupervisorArtifact() {
-        	focused-by : consumer1, consumer2, consumer3, consumer4, supervisor1
+        	focused-by : consumer1, supervisor1
         }
         
         artifact consumption1Artifact : tp_agentes.ConsumptionArtifact(){
@@ -42,12 +41,27 @@ mas tp_agentes {
         	focused-by : consumer4, supervisor1
         }
     }
+    
+    
+    organisation tpOrganisation : tp_maise.xml {  
+        group cGroup : consumptionGroup {
+         responsible-for :  consumptionSchemeInstance
+            players: consumer1    consumer
+            		 consumer2    consumer
+            		 consumer3    consumer
+            		 consumer4    consumer
+                     supervisor1  supervisor
+            debug
+        }
+        scheme  consumptionSchemeInstance : consumptionScheme{
+        	 debug
+     	} 
+     }
+     
 	    
     // agent source path
     asl-path: src/agt
-              src/agt/inc
-
-    
+              src/agt/inc   
     
 }
 

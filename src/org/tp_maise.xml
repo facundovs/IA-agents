@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="http://moise.sourceforge.net/xml/os.xsl" type="text/xsl" ?>
+
+<organisational-specification 
+    id="tp_maise"
+    os-version="0.8"
+  
+    xmlns='http://moise.sourceforge.net/os'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:schemaLocation='http://moise.sourceforge.net/os
+                        http://moise.sourceforge.net/xml/os.xsd' >
+    
+<structural-specification>
+
+<role-definitions>
+    <role id="supervisor" />
+    <role id="consumer" />
+</role-definitions>
+
+<group-specification id="consumptionGroup">
+    <roles>
+        <role id="supervisor" min="1" max="1"/>
+        <role id="consumer" min="1" max="4"/>
+    </roles>
+</group-specification>
+</structural-specification>
+
+<functional-specification>
+    <scheme id="consumptionScheme">
+        <goal id="negotiation">
+            <plan operator="sequence">
+                <goal id="start"  ttf="10 seconds"/>
+                <goal id="sendConsumptions" ttf="10 seconds" /> 
+                <goal id="doEnergyExchange" ttf="10 seconds"/>
+            </plan>
+        </goal>
+
+        <mission id="mSupervisor" min="1" max="1">
+            <goal id="start"/>
+            <goal id="doEnergyExchange"/> 
+        </mission>
+   		<mission id="mConsumer" min="1" max="4">
+            <goal id="sendConsumptions"/>
+        </mission>
+    </scheme>
+</functional-specification>
+
+<normative-specification>
+  <norm id="n1"  type="obligation"   role="supervisor"   mission="mSupervisor" />
+   <norm id="n2"  type="permission"   role="consumer"   mission="mConsumer" />
+</normative-specification>
+
+</organisational-specification>
