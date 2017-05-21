@@ -11,7 +11,7 @@ public class ConsumptionArtifact extends Artifact {
 	public static final String CONSUMER_3 = "consumer3";
 	public static final String CONSUMER_4 = "consumer4";
 
-	//The followings vectors are the averages of the data sets.
+	//The followings vectors represents the averages of the data sets.
 	private int [] consumptionsConsumer1 = {-1, 0, 0, 1, 3, 2, -5};
 	private int [] consumptionsConsumer2 = {0, 3, -1, 4, 3, -2, 4};
 	private int [] consumptionsConsumer3 = {0, 2, 2, 0, -1, 0, 0};

@@ -22,7 +22,7 @@ mas tp_agentes {
 	
 	 workspace environment {
         artifact supervisorArtifact : tp_agentes.SupervisorArtifact() {
-        	focused-by : consumer1, supervisor1
+        	focused-by : consumer1, consumer2, consumer3, consumer4, supervisor1
         }
         
         artifact consumption1Artifact : tp_agentes.ConsumptionArtifact(){

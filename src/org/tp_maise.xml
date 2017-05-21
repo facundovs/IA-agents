@@ -30,9 +30,9 @@
     <scheme id="consumptionScheme">
         <goal id="negotiation">
             <plan operator="sequence">
-                <goal id="start"  ttf="10 seconds"/>
-                <goal id="sendConsumptions" ttf="10 seconds" /> 
-                <goal id="doEnergyExchange" ttf="10 seconds"/>
+                <goal id="start"  />
+                <goal id="sendConsumptions"  /> 
+                <goal id="doEnergyExchange"/>
             </plan>
         </goal>
 
